@@ -12,7 +12,7 @@ class Pages extends CI_Controller {
 
     public function view($page = 'home')
     {
-        
+
 
        $this->load->library('session');
        $this->load->library('facebook');
@@ -34,20 +34,20 @@ class Pages extends CI_Controller {
        $data['phase']=$userdata['phase'];
         if($userid==FALSE)
         {
-           
+
             $data['login_url'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('pages/login'), 
+            'redirect_uri' => site_url('pages/login'),
             'scope' => 'email, publish_actions',
-                                            'display' => 'page' 
+                                            'display' => 'page'
             ));
             $data['title']='Login';
-            $page='home';  
-            
+            $page='home';
+
 
         }
         else
         {
-            
+
             $level_data=$this->users_model->get_level($userdata['level']);
             if($level_data['title_clue']!=NULL)
             {
@@ -69,11 +69,11 @@ class Pages extends CI_Controller {
                  'prefix' => '',
                  'secure' => FALSE
                 );
-                $this->input->set_cookie($cookie); 
+                $this->input->set_cookie($cookie);
             }
             if($level_data!=NULL)
             {
-                $page='arena'; 
+                $page='arena';
                 if(($userdata['level']==16)&&($userdata['phase']!=1))
                 {
                     $data['title']='Start Phase 2';
@@ -91,7 +91,7 @@ class Pages extends CI_Controller {
                         $state='1';
                         break;
                     }
-                } 
+                }
                 if($state==1)
                 {
                     $data['title']='Congratulations';
@@ -102,9 +102,9 @@ class Pages extends CI_Controller {
                     $data['title']='Sorry';
                     $page='update';
                 }
-            }                   
+            }
         }
-        
+
         if($userdata['status']==-1)
         {
             $page='banned';
@@ -112,7 +112,7 @@ class Pages extends CI_Controller {
         }
         $this->load->view('templates/header', $data);
         $this->load->view('pages/'.$page, $data);
-        $this->load->view('templates/footer', $data);           
+        $this->load->view('templates/footer', $data);
     }
     public function login()
     {
@@ -130,18 +130,18 @@ class Pages extends CI_Controller {
         $data['actrules']='';
         $data['actprof']='';
         $data['actstory']='';
-        $user = $this->facebook->getUser();        
-        if ($user) 
+        $user = $this->facebook->getUser();
+        if ($user)
         {
-            try 
+            try
             {
                 $data['user_profile'] = $this->facebook->api('/me');
-            } 
-            catch (FacebookApiException $e) 
+            }
+            catch (FacebookApiException $e)
             {
                 redirect('','location');
                 /*$data['title']='Login';
-                $page='home';  
+                $page='home';
                 $this->load->view('templates/header', $data);
                 $this->load->view('pages/'.$page, $data);
                 $this->load->view('templates/footer', $data);*/
@@ -163,25 +163,25 @@ class Pages extends CI_Controller {
                     redirect('','location');
                 }
                 else
-                {                        
+                {
                     $data['title']='Sign Up';
                     $page='signup';
                     $this->load->view('templates/header', $data);
                     $this->load->view('pages/'.$page, $data);
                     $this->load->view('templates/footer', $data);
                 }
-            }            
+            }
         }
-        else 
+        else
         {
             redirect('','location');
             /*$data['title']='Login';
-            $page='home';  
+            $page='home';
             $this->load->view('templates/header', $data);
             $this->load->view('pages/'.$page, $data);
             $this->load->view('templates/footer', $data);*/
         }
-            
+
     }
 
     public function create()
@@ -194,15 +194,15 @@ class Pages extends CI_Controller {
         {
             $userdata=$this->facebook->api('/me');
         }
-        catch (FacebookApiException $e) 
+        catch (FacebookApiException $e)
         {
             $userdata=FALSE;
-            redirect('','location'); 
-        }  
+            redirect('','location');
+        }
         $college=$this->input->post('college',TRUE);
         $college=preg_replace('/\s+/','',$college);
         if($college!=''&&$college!=FALSE)
-        {   
+        {
         $this->users_model->create($userdata);
          $newdata = array(
                         'userid'=> $userdata['id']
@@ -233,11 +233,11 @@ class Pages extends CI_Controller {
         $data['actleaderboard']='';
         $data['actcluebox']='';
         $data['actrules']='';
-        $data['actprof']=''; 
-        $data['actstory']='';     
-        if ($userid!=NULL) 
+        $data['actprof']='';
+        $data['actstory']='';
+        if ($userid!=NULL)
         {
-           
+
             $this->load->model('users_model');
             $userdata=$this->users_model->get_userdata($userid);
             if($userdata!=FALSE)
@@ -251,22 +251,22 @@ class Pages extends CI_Controller {
                 redirect('','location');
             }
             else
-            {          
+            {
                 $data['userid']=$userid;
                 $data['name']=$username;
-                $data['userprofile']=$userprofile;              
+                $data['userprofile']=$userprofile;
                 $data['title']='Sign Up';
                 $page='jssignup';
                 $this->load->view('templates/header', $data);
                 $this->load->view('pages/'.$page, $data);
                 $this->load->view('templates/footer', $data);
             }
-                       
+
         }
-        else 
+        else
         {
             $data['title']='Login';
-            $page='jslogin';  
+            $page='jslogin';
             $this->load->view('templates/header', $data);
             $this->load->view('pages/'.$page, $data);
             $this->load->view('templates/footer', $data);
@@ -324,7 +324,7 @@ class Pages extends CI_Controller {
                 );
                      $userid=$this->session->userdata('userid');
 
-            $this->input->set_cookie($cookie); 
+            $this->input->set_cookie($cookie);
             $userdata=$this->users_model->get_userdata($userid);
             $this->posttofb('pass',$userdata['level']);
 
@@ -369,7 +369,7 @@ class Pages extends CI_Controller {
         }catch (FacebookApiException $e){
             return NULL;
         }
-    
+
         if($type!='pass'){
             $msg = array(
                 'access_token'  => $token,
@@ -383,10 +383,10 @@ class Pages extends CI_Controller {
                 'link' => 'http://incognito.tezoro.org'
                 );
         }
-   
-     
 
-           
+
+
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,'https://graph.facebook.com/' . $userid . '/feed');
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -438,7 +438,7 @@ class Pages extends CI_Controller {
                 $details['level']=$user['level'];
                 $details['college']=$user['college'];
                 array_push($regdata,$details);
-               
+
 
             }
             else
@@ -446,7 +446,7 @@ class Pages extends CI_Controller {
               $details1['rank']=$rank;
                 $details1['name']=$user['name'];
                 $details1['level']=$user['level'];
-                array_push($tkmdata,$details1);  
+                array_push($tkmdata,$details1);
 
             }
             $rank++;
@@ -455,12 +455,6 @@ class Pages extends CI_Controller {
         $data['tkm']=$tkmdata;
         $data['reg']=$regdata;
         $data['userdata']=$userdata;
-
-
-
-
-
-
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/'.$page, $data);
@@ -516,7 +510,7 @@ class Pages extends CI_Controller {
         $data['actleaderboard']='';
         $data['actcluebox']='';
         $data['actrules']='';
-        $data['actprof']='active';      
+        $data['actprof']='active';
         $data['actstory']='';
         $data['userdata']=$this->users_model->get_userdata($userid);
         $data['rank']=$this->users_model->get_rank();
@@ -548,7 +542,7 @@ class Pages extends CI_Controller {
         $config['next_link'] = 'Next';
         $config['prev_link'] = 'Previous';
         $config['uri_segment'] = 2;
-        
+
         $this->pagination->initialize($config);
         if($this->uri->segment(2)){
         $pageno = ($this->uri->segment(2)) ;
@@ -569,7 +563,7 @@ class Pages extends CI_Controller {
         {
             $data['storydata']=NULL;
         }
-        
+
         $str_links = $this->pagination->create_links();
         $data["links"] = explode('&nbsp;',$str_links );
         $data['total']=$total_row;
@@ -584,7 +578,7 @@ class Pages extends CI_Controller {
         $data['actleaderboard']='';
         $data['actcluebox']='';
         $data['actrules']='';
-        $data['actprof']='';      
+        $data['actprof']='';
         $data['actstory']='active';
         $this->load->view('templates/header', $data);
         $this->load->view('pages/'.$page, $data);
@@ -603,7 +597,7 @@ class Pages extends CI_Controller {
         }
         $story=$this->users_model->is_story_level($userdata['level']);
         if($story!=FALSE)
-         $total_row = $this->users_model->story_count($userid); 
+         $total_row = $this->users_model->story_count($userid);
         else
           redirect('','location');
         redirect(base_url('index.php/story/'.$story['id']),'location');
@@ -657,7 +651,7 @@ class Pages extends CI_Controller {
         else
         {
              redirect('','location');
-        }      
+        }
     }
 
     public function storyimg(){
@@ -714,7 +708,7 @@ class Pages extends CI_Controller {
         else
         {
              redirect('','location');
-        }      
+        }
     }
 
 
