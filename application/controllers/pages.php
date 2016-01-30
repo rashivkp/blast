@@ -122,7 +122,7 @@ class Pages extends CI_Controller {
         $this->load->model('users_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('college', 'College', 'required');
+        $this->form_validation->set_rules('college', 'College', 'trim|required|max_length[32]|xss_clean');
         $this->form_validation->set_rules('emailid', 'Email ID', 'required');
         $data['acthome']='active';
         $data['actleaderboard']='';
@@ -189,6 +189,9 @@ class Pages extends CI_Controller {
         $this->load->library('session');
         $this->load->library('facebook');
         $this->load->model('users_model');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('college', 'College', 'trim|required|max_length[32]|xss_clean');
+        $this->form_validation->set_rules('emailid', 'Email ID', 'required|valid_email');
         $this->load->helper('url');
         try
         {
@@ -199,22 +202,20 @@ class Pages extends CI_Controller {
             $userdata=FALSE;
             redirect('','location');
         }
+        if ($this->form_validation->run() == FALSE)
+        {
+            //die(validation_errors());
+            redirect('pages/login','location');
+        }
         $college=$this->input->post('college',TRUE);
         $college=preg_replace('/\s+/','',$college);
-        if($college!=''&&$college!=FALSE)
-        {
         $this->users_model->create($userdata);
-         $newdata = array(
-                        'userid'=> $userdata['id']
-                        );
+        $newdata = array(
+            'userid'=> $userdata['id']
+        );
         $this->session->set_userdata($newdata);
         $this->posttofb();
         redirect('pages/viewstory','location');
-        }
-        else
-        {
-            redirect('pages/login','location');
-        }
 
     }
     public function jslogin()
@@ -602,15 +603,16 @@ class Pages extends CI_Controller {
           redirect('','location');
         redirect(base_url('index.php/story/'.$story['id']),'location');
    }
-   public function jumptonext()
-   {
-          $this->load->model('users_model');
-        $this->load->library('session');
-        $userid=$this->session->userdata('userid');
-        $this->users_model->nextphase($userid);
-        redirect('pages/viewstory','location');
 
-   }
+   //public function jumptonext()
+   //{
+        //$this->load->model('users_model');
+        //$this->load->library('session');
+        //$userid=$this->session->userdata('userid');
+        //$this->users_model->nextphase($userid);
+        //redirect('pages/viewstory','location');
+
+   //}
 
     public function levels(){
         $file_name=$this->uri->segment(2, 0);
