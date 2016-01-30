@@ -128,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `userlist` (
   `emailid` varchar(50) DEFAULT NULL,
   `mobileno` varchar(15) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `phase` int(11) DEFAULT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid` (`userid`),
   UNIQUE KEY `fb_userid` (`fb_userid`)
