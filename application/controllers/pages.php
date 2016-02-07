@@ -269,7 +269,6 @@ class Pages extends CI_Controller {
         $this->load->model('users_model');
         $userdata['id']=$this->input->post('userid',TRUE);
         $userdata['name']=$this->input->post('name',TRUE);
-        $userdata['link']=$this->input->post('userprofile',TRUE);
         $this->users_model->create($userdata);
          $newdata = array(
                         'userid'=> $userdata['id']

@@ -64,7 +64,7 @@ class Users_model extends CI_Model {
 
 	{
 
-		$this->db->order_by('level desc'); 
+		$this->db->order_by('level desc');
 
 		$leveldata=$this->db->get('levels');
 
@@ -108,7 +108,7 @@ class Users_model extends CI_Model {
 
 			'name'=>$userdata['name'],
 
-			'user_profile'=>$userdata['link'],
+			'user_profile'=> NULL,
 
 			'level'=>'1',
 
@@ -293,7 +293,7 @@ class Users_model extends CI_Model {
 
 			$row=$userdata->row_array();
 
-			$level=$row['level'];			
+			$level=$row['level'];
 
 		}
 
@@ -393,7 +393,7 @@ class Users_model extends CI_Model {
 
 	{
 
-		$this->db->order_by('level desc, pass_time asc'); 
+		$this->db->order_by('level desc, pass_time asc');
 
 		$userdata=$this->db->get_where('userlist',array('status'=>'1'));
 
@@ -691,10 +691,10 @@ class Users_model extends CI_Model {
 
 			$this->db->update('userlist',$userrow);
 		}
-		
+
 
 	}
 
-	
+
 
 }
