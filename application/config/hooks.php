@@ -10,7 +10,13 @@
 |
 */
 
-
+$hook['pre_system'][] = array(
+    'class'    => '',
+    'function' => 'isCountDownFinished',
+    'filename' => 'timer.php',
+    'filepath' => 'hooks',
+    'params'   => '',
+);
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */
