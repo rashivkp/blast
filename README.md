@@ -38,3 +38,13 @@ these two modules needs to be installed with apache2
 
 - mod_rewrite
 - headers
+
+## Modify these files
+
+```
+    mv application/config/database.php.example application/config/database.php
+    mv application/config/facebook.php.example application/config/facebook.php
+    mv application/config/decepto.php.example application/config/decepto.php
+    mv application/config/config.php.example application/config/config.php
+    mv application/views/templates/analyticstracking.php.example application/views/templates/analyticstracking.php
+```
