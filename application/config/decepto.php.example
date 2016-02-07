@@ -1,0 +1,7 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+// facebook userid of master-admin
+$config['masterid']= 'ID OF MASTER ADMIN HERE';
+
+// the serial number of last level of game.
+// Congrats page shows only after this level, even if there is no levels to be answered
+$config['final_level']= 16;

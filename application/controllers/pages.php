@@ -82,24 +82,13 @@ class Pages extends CI_Controller {
             }
             else
             {
-                $state='0';
-                $leveldata=$this->users_model->get_levels();
-                foreach($leveldata as $level)
-                {
-                    if($level['active']==1)
-                    {
-                        $state='1';
-                        break;
-                    }
-                }
-                if($state==1)
-                {
+                $this->config->load('decepto');
+                $final_level = $this->config->item('final_level');
+                if ($final_level < $userdata['level']) {
                     $data['title']='Congratulations';
                     $page='top';
-                }
-                else
-                {
-                    $data['title']='Sorry';
+                } else {
+                    $data['title']='Stay still for another upload';
                     $page='update';
                 }
             }

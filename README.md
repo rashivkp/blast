@@ -31,3 +31,10 @@ Online Treasure Hunt with Facebook Integration
 - Facility for admin users to add other admins.
 - Facility for master admin to remove admin users.
 - Faciltiy to test any level from admin side.
+
+## Notes
+
+these two modules needs to be installed with apache2
+
+- mod_rewrite
+- headers
