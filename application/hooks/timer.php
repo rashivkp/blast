@@ -6,7 +6,7 @@ function isCountDownFinished() {
      * only a count down page will be available for all routes if the time is not reached
      * if you don't want this, just set a old date or disable the hook
      */
-    $releasing_date = new DateTime("2016-02-12 10:00:00");
+    $releasing_date = new DateTime("2016-02-19 10:00:00");
 
     $server_time = date('D M d Y H:i:s O');
     if (new DateTime() < $releasing_date) {

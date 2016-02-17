@@ -1,72 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <script  src="//assets/js/countdown.min.js"></script>
+<title>Blast | Schnitzel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/b4/css/bootstrap.min.css">
+    <script  src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="assets/b4/js/bootstrap.min.js"></script>
     <style>
-    body{
-        text-align: center;
-        background: #00ECB9;
-        font-family: sans-serif;
-        font-weight: 100;
+    @font-face {
+        font-family:piece;
+        src: url(PiecesofEight.ttf);
     }
 
     h1{
-        color: #396;
-        font-weight: 100;
-        font-size: 40px;
-        margin: 40px 0px 20px;
-    }
+        font-family:'piece';
+        color:#e2e2e2;
+        white-space:nowrap;
 
-    #clockdiv{
-        font-family: sans-serif;
-        color: #fff;
-        display: inline-block;
-        font-weight: 100;
-        text-align: center;
-        font-size: 30px;
+      }
+    @media(min-width:1px) {
+        h1{
+            font-family:'piece';
+            color:#e2e2e2;
+            white-space:nowrap;
+            font-size:25px;
+          }
     }
-
-    #clockdiv > div{
-        padding: 10px;
-        border-radius: 3px;
-        background: #00BF96;
-        display: inline-block;
+    h2{
+     font-size:50px;
     }
-
-    #clockdiv div > span{
-        padding: 15px;
-        border-radius: 3px;
-        background: #00816A;
-        display: inline-block;
-    }
-
-    .smalltext{
-        padding-top: 5px;
-        font-size: 16px;
+    body{
+      background: url("assets/b4/t.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
     }
     </style>
 </head>
-<body>
-<h1>Countdown Clock</h1>
-<div id="clockdiv">
-  <div>
-    <span class="days"></span>
-    <div class="smalltext">Days</div>
-  </div>
-  <div>
-    <span class="hours"></span>
-    <div class="smalltext">Hours</div>
-  </div>
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Seconds</div>
-  </div>
+
+<body >
+<br>
+<div class= "container">
+    <br><br>
+    <center>
+    <img src="assets/b4/Schnitzel1.png" class="img-fluid" alt="Generic responsive image" />
+    </center>
+</div>
+<br>
+<div class="container">
+    <div class="row" id="clockdiv">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <center>
+            <br>
+            <h2 style="color:white"> <span class="days"></span></h2>
+            <h4>Days</h4>
+            <br>
+            </center>
+        </div>
+        <div class="col-sm-2">
+            <center>
+            <br>
+            <h2 style="color:white"> <span class="hours"></span></h2>
+            <h4>Hours</h4>
+            <br>
+            </center>
+        </div>
+
+        <div class="col-sm-2">
+            <center>
+            <br>
+            <h2 style="color:white"> <span class="minutes"></span></h2>
+            <h4>Minutes</h4>
+            <br>
+            </center>
+        </div>
+
+        <div class="col-sm-2">
+            <center>
+            <br>
+            <h2 style="color:white"> <span class="seconds"></span></h2>
+            <h4>Seconds</h4>
+            <br>
+            </center>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 </div>
 <script>
 function getTimeRemaining(endtime) {
