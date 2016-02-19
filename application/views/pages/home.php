@@ -117,7 +117,7 @@
 <div class="container">
 <div class="card-columns">
 
-<a href="signup.html">
+<a href="<?= base_url('leaderboard')?>">
 <div class="card card-inverse"  style="background-color:#8d1517; border-color:#8d1517;">
 
 <img class="card-img" img src="<?= base_url('assets/b4/cup.png')?>" alt="Card image" >
@@ -145,7 +145,7 @@
 </a>
 
 
-<a href="signup.html">
+<a href="<?= base_url('rules')?>">
 <div class="card card-inverse"  style="background-color:#8d1517; border-color:#8d1517;">
 
 <img class="card-img" img src="<?= base_url('assets/b4/rules.png')?>" alt="Card image" >
