@@ -88,7 +88,23 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-</div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="fb-page center-block" style="float:none"
+      data-href="https://www.facebook.com/blast2k16"
+      data-width="380"
+      data-hide-cover="false"
+      data-show-facepile="false"
+      data-show-posts="false"></div>
+    </div>
+  </div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1514492578857430";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script>
 function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.parse(new Date());
@@ -133,6 +149,7 @@ function initializeClock(id, endtime) {
 var deadline = new Date('<?= $releasing_date ?>');
 initializeClock('clockdiv', deadline);
 </script>
+<?php include_once(APPPATH."views/templates/analyticstracking.php") ?>
 </body>
 </html>
 

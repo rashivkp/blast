@@ -6,8 +6,45 @@ class Pages extends CI_Controller {
     {
         parent::_construct();
         $this->load->helper('url');
-         $this->load->model('users_model');
+        $this->load->model('users_model');
 
+    }
+
+    public function home() {
+
+        $this->load->library('session');
+        $this->load->library('facebook');
+        $this->load->model('users_model');
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('college', 'College', 'required');
+        $this->form_validation->set_rules('emailid', 'Email ID', 'required');
+        $data['acthome']='active';
+        $data['actleaderboard']='';
+        $data['actcluebox']='';
+        $data['actrules']='';
+        $data['actprof']='';
+        $data['actstory']='';
+
+        $userid=$this->session->userdata('userid');
+        $userdata=$this->users_model->get_userdata($userid);
+        $data['phase']=$userdata['phase'];
+        if($userid==FALSE) {
+            $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('pages/login'),
+                'scope' => 'email, publish_actions',
+                'display' => 'page'
+            ));
+            $data['title']='Login';
+            $page='home';
+        }
+        if($userdata['status']==-1) {
+            $page='banned';
+            $data['title']='BANNED';
+        }
+        $this->load->view('pages/home', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function view($page = 'home')
@@ -34,16 +71,7 @@ class Pages extends CI_Controller {
        $data['phase']=$userdata['phase'];
         if($userid==FALSE)
         {
-
-            $data['login_url'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('pages/login'),
-            'scope' => 'email, publish_actions',
-                                            'display' => 'page'
-            ));
-            $data['title']='Login';
-            $page='home';
-
-
+            redirect('home','location');
         }
         else
         {
@@ -103,6 +131,7 @@ class Pages extends CI_Controller {
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer', $data);
     }
+
     public function login()
     {
 
@@ -181,6 +210,7 @@ class Pages extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('college', 'College', 'trim|required|max_length[32]|xss_clean');
         $this->form_validation->set_rules('emailid', 'Email ID', 'required|valid_email');
+        $this->form_validation->set_rules('mobileno', 'Mobile No', 'required|is_natural|exact_length[10]');
         $this->load->helper('url');
         try
         {
@@ -363,13 +393,13 @@ class Pages extends CI_Controller {
             $msg = array(
                 'access_token'  => $token,
                 'message' => 'Try out an exciting online treasure hunt!',
-                'link' => 'http://incognito.tezoro.org'
+                'link' => 'http://blast2k16.in'
                 );
         }else{
             $msg = array(
                 'access_token'  => $token,
                 'message' => 'I\'ve finished Level '.$level.' of this awesome online treasure hunt.',
-                'link' => 'http://incognito.tezoro.org'
+                'link' => 'http://blast2k16.in'
                 );
         }
 
@@ -452,7 +482,7 @@ class Pages extends CI_Controller {
     }
     public function clues()
     {
-        redirect('https://www.facebook.com/incognito.tezoro','location');
+        redirect('https://www.facebook.com/blast2k16','location');
         /*$this->load->library('session');
         $this->load->model('users_model');
         $data['clue_data']=$this->users_model->get_clues();

@@ -2,21 +2,16 @@
 
 <?php echo validation_errors(); ?>
 
-<div class="container">
-
-  <div class="row">
- <div class="text-center">
+<div class="text-center container">
       <img src="<?php echo base_url('levels/'.$level['question']) ?>"
 
       class="img-rounded col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 " style="border-style:solid; border-color:#0bffff; border-width:2px">
  </div>
-  </div>
 
   <br>
 
   <!--<?php  echo $level['html_clue'] ?> -->
 
-  <div class="row">
 
       <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
 
@@ -38,6 +33,5 @@
 
       </div>
 
-    </div>
 </div>
 

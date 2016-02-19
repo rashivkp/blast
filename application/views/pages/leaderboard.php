@@ -11,14 +11,19 @@ $(document).ready(function(){
   });
 });
 </script>
+<br>
+  <div class= "container">
+      <img src="<?= base_url('assets/b4/Schnitzel1.png') ?>" class="img-fluid" alt="Generic responsive image">
+   </div>
+<br>
 <div class="container">
-<table class="table" id="regular" style="margin-top:60px">
+<table class="table table-inverse" id="regular" style="margin-top:60px">
 <thead>
 <tr>
-	<th class="Dagger">Rank </th>
-	<th class="Dagger">Name</th>
-	<th class="Dagger">Level</th>
-	<th class="Dagger">College</th>
+	<th>Rank </th>
+	<th>Name</th>
+	<th>Level</th>
+	<th>College</th>
 </tr>
 </thead>
 <tbody>

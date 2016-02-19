@@ -1,14 +1,10 @@
+<div class="container ">
+    <h1 style="text-align:center"> Congratulations!<br>You Have Succesfully Completed Schnitzel </h1>
+    <h1 style="text-align:center">You will be contacted soon</h1>
+</div>
 <div class="container">
-    <div class="row">
-        <div class="text-center mt70" >
-            <h1 class="Dagger ">
-                Congratulations You Have Succesfully Completed Incognito And Saved The World From A Nuclear Devastation
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="text-center mt60">
-            <h1 class="Dagger"> We Will Be Back Next Year </h1>
-        </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <img src="<?= base_url('assets/b4/blast-big.jpg') ?>" class="img-fluid" alt="Generic responsive image">
     </div>
 </div>

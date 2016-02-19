@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = 'pages/view';
+$route['home']='pages/home';
 $route['leaderboard']='pages/leaderboard';
 $route['clues']='pages/clues';
 $route['rules']='pages/rules';
