@@ -1,6 +1,7 @@
-#INCOGNITO
+# Schnitzel
 
-Online Treasure Hunt with Facebook Integration
+Online Treasure Hunt with Facebook Integration. a fork of kirans08/incognito
+
 
 ##Important
 

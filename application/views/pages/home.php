@@ -39,9 +39,6 @@
   }
 }
 
-	   .nowrap{
-	    white-space:nowrap;
-	   }
 
 	@font-face {
     font-family:piece;
@@ -56,7 +53,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 
 	   }
 
@@ -64,7 +60,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 		 font-size:25px;
 	   }
 	}
@@ -74,7 +69,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 		 font-size:23px;
 	   }
 	}
@@ -84,7 +78,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 		 font-size:25px;
 	   }
 	}
@@ -93,7 +86,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 		 font-size:30px;
 	   }
 
@@ -101,7 +93,6 @@
 	 h1{
 	     font-family:'piece';
 		 color:#e2e2e2;
-		 white-space:nowrap;
 		 font-size:40px;
 	   }
 	}
