@@ -428,50 +428,31 @@ class Pages extends CI_Controller {
         $data['actrules']='';
         $data['actprof']='';
         $data['actstory']='';
-        $page='leaderboard';
+        $page = 'leaderboard';
         $data['title']='Leaderboard';
-        $data['nop']=$this->config->item('leaderboard');
+        $data['nop'] = $this->config->item('leaderboard');
         $userdata=$this->users_model->get_userlist();
         $rank=1;
-            $regdata = array(
+        $regdata = array(
             'rank' => NULL,
             'name' => NULL,
             'level' => NULL,
             'college' => NULL
         );
-        $tkmdata = array(
-            'rank' => NULL,
-            'name' => NULL,
-            'level' => NULL
-        );
 
-        if($userdata!=NULL)
-        {
-        foreach ($userdata as $user) {
+        if ($userdata != NULL) {
 
-            $tkm=strtoupper($user['college']);
-            if(strpos($tkm,"T K M")===false&&strpos($tkm,"TKM")===false&&strpos($tkm,"T.K.M")===falsE&&strpos($tkm,"TKMCE")===false&&strpos($tkm,"THANGAL")===false)
-            {
-                 $details['rank']=$rank;
+            foreach ($userdata as $user) {
+
+                $details['rank']=$rank;
                 $details['name']=$user['name'];
                 $details['level']=$user['level'];
                 $details['college']=$user['college'];
                 array_push($regdata,$details);
-
-
+                $rank++;
             }
-            else
-            {
-              $details1['rank']=$rank;
-                $details1['name']=$user['name'];
-                $details1['level']=$user['level'];
-                array_push($tkmdata,$details1);
+        }
 
-            }
-            $rank++;
-        }
-        }
-        $data['tkm']=$tkmdata;
         $data['reg']=$regdata;
         $data['userdata']=$userdata;
 
