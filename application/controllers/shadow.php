@@ -92,11 +92,11 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data);  
+            $this->load->view('templates/footer', $data);
 
         }
 
-    
+
 
     }
 
@@ -168,11 +168,11 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data);  
+            $this->load->view('templates/footer', $data);
 
         }
 
-    
+
 
     }
 
@@ -244,7 +244,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -398,7 +398,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -498,7 +498,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -570,7 +570,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -946,7 +946,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -1158,13 +1158,13 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
     }
 
-    
+
 
     public function userdetails()
 
@@ -1228,7 +1228,7 @@ class Shadow extends CI_Controller {
 
             $page='userdetails';
 
-           
+
 
 
 
@@ -1236,7 +1236,7 @@ class Shadow extends CI_Controller {
 
             $this->load->view('shadow/'.$page, $data);
 
-            $this->load->view('templates/footer', $data); 
+            $this->load->view('templates/footer', $data);
 
         }
 
@@ -1560,7 +1560,7 @@ class Shadow extends CI_Controller {
 
                 );
 
-                $this->input->set_cookie($cookie); 
+                $this->input->set_cookie($cookie);
 
             }
 
@@ -1634,9 +1634,7 @@ class Shadow extends CI_Controller {
 
             $answer=$this->input->post('answer',TRUE);
 
-        $answer=preg_replace("/[^A-Za-z0-9 ]/", '', $answer);
-        $answer=preg_replace('/\s+/','',$answer);
-        
+        $answer=preg_replace("/[^A-Za-z0-9\.]/", '', $answer);
         $answer=strtolower($answer);
 
             $leveldata=$this->shadow_model->get_levels($level);
@@ -2125,7 +2123,7 @@ class Shadow extends CI_Controller {
 
             }
 
-        }    
+        }
 
     }
 

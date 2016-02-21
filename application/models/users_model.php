@@ -143,34 +143,21 @@ class Users_model extends CI_Model {
 	{
 
 		$this->load->library('session');
-
         $userid=$this->session->userdata('userid');
-
 		$userdata=$this->db->get_where('userlist',array('fb_userid'=>$userid));
 
 		if($userdata->num_rows()>0)
-
 		{
-
 			$userrow=$userdata->row_array();
-
 			$level=$userrow['level'];
-
-		}
-
-		else
-
+		} else
 		{
-
 			redirect('','location');
-
 		}
 
 		$answer = (strlen($answer) > 30) ? substr($answer,0,30): $answer;
-
-		$answer=preg_replace('/\s+/','',$answer);
-		  $answer=preg_replace("/[^A-Za-z0-9 ]/", '', $answer);
-
+        // Answer should only contain alphabets, numbers, periods.
+		$answer=preg_replace("/[^A-Za-z0-9\.]/", '', $answer);
 		$answer=strtolower($answer);
 
 		$org_time=time();
