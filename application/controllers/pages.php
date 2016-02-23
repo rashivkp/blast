@@ -99,19 +99,16 @@ class Pages extends CI_Controller {
                 );
                 $this->input->set_cookie($cookie);
             }
-            if($level_data!=NULL)
+
+            if ($level_data!=NULL)
             {
                 $page='arena';
-                if(($userdata['level']==16)&&($userdata['phase']!=1))
-                {
-                    $data['title']='Start Phase 2';
-                    $page='jump';
-                }
             }
             else
             {
                 $this->config->load('decepto');
                 $final_level = $this->config->item('final_level');
+
                 if ($final_level < $userdata['level']) {
                     $data['title']='Congratulations';
                     $page='top';
