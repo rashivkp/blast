@@ -4,59 +4,22 @@ class Users_model extends CI_Model {
 
 
 
-	public function __construct()
-
-	{
-
+	public function __construct() {
 		$this->load->database();
-
 	}
 
-	public function get_level($level=NULL)
+	public function get_level($level=NULL) {
 
-	{
-
-		/*$this->load->library('session');
-
-        $userid=$this->session->userdata('userid');
-
-		$userdata=$this->db->get_where('userlist',array('fb_userid'=>$userid));
-
-		$level=1;
-
-		if($userdata->num_rows()>0)
-
-		{
-
-			$row=$userdata->row_array();
-
-			$level=$row['level'];
-
-		}*/
-		if($level==NULL)
+        if($level==NULL) {
 			return NULL;
+        }
 
-		$leveldata=$this->db->get_where('levels',array('level'=>$level));
-
-		if($leveldata->num_rows()>0)
-
-		{
-
-			$row=$leveldata->row_array();
-
-			if($row['active']==0)
-
-			{
-
-				return NULL;
-
-			}
-
-			return $row;
-
+		$leveldata = $this->db->get_where('levels',array('level'=>$level, 'active'=>1));
+		if( ! $leveldata->num_rows()) {
+            return NULL;
 		}
 
-		return NULL;
+        return $leveldata->row_array();
 
 	}
 
